@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskie 🎀</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Taskie 🎀</h1>
+            <div class="header-controls">
+                <button class="theme-switcher" id="theme-switcher" aria-label="Toggle dark mode">🌙</button>
+                <button class="lofi-toggle" id="lofi-toggle" aria-label="Toggle Lo-fi Music">🎵</button>
+            </div>
+        </header>
+
+        <section class="dashboard">
+            <div class="dashboard-card">
+                <h3>Today's Progress</h3>
+                <div class="progress-ring" id="progress-ring">0%</div>
+            </div>
+            <div class="dashboard-card">
+                <h3>Completion Streak</h3>
+                <span class="streak-counter" id="streak-counter">0</span>
+                <p class="streak-counter-label">days 🔥</p>
+            </div>
+            <div class="dashboard-card">
+                <h3>How are you?</h3>
+                <select id="mood-selector" class="mood-selector">
+                    <option value="happy">😊 Happy</option>
+                    <option value="neutral">😐 Neutral</option>
+                    <option value="tired">😞 Tired</option>
+                </select>
+                <p id="motivational-message">You've got this!</p>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="view-switcher">
+                <button class="view-btn active" data-view="tasks">Task List</button>
+                <button class="view-btn" data-view="calendar">Calendar</button>
+            </div>
+            
+            <div id="tasks-view" class="view active">
+                <div id="task-list" class="tasks-container">
+                    <!-- Tasks will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <div id="calendar-view" class="view">
+                 <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month-btn"><</button>
+                        <h3 id="calendar-month-year"></h3>
+                        <button id="next-month-btn">></button>
+                    </div>
+                    <div class="calendar-grid" id="calendar-days-grid">
+                        <!-- Calendar days will be rendered here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+
+    <button id="add-task-btn">+</button>
+
+    <!-- Task Form Modal -->
+    <div class="modal-overlay" id="task-modal">
+        <div class="modal-content">
+            <h2 id="modal-title">New Task</h2>
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                <div class="form-group">
+                    <label for="task-title-input">What's the plan? ✨</label>
+                    <input type="text" id="task-title-input" required>
+                </div>
+                 <div class="form-group-inline">
+                     <div class="form-group">
+                        <label for="task-date-input">Date 🗓️</label>
+                        <input type="date" id="task-date-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-sticker-input">Sticker 🧁</label>
+                        <select id="task-sticker-input">
+                            <option value="⭐">⭐ General</option>
+                            <option value="📚">📚 Study</option>
+                            <option value="💻">💻 Code</option>
+                            <option value="🧹">🧹 Chores</option>
+                            <option value="💪">💪 Workout</option>
+                            <option value="🍵">🍵 Break</option>
+                            <option value="🎨">🎨 Creative</option>
+                        </select>
+                    </div>
+                </div>
+                 <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="task-start-time-input">Start Time ⏰</label>
+                        <input type="time" id="task-start-time-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-end-time-input">End Time 🏁</label>
+                        <input type="time" id="task-end-time-input">
+                    </div>
+                 </div>
+                 <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="task-priority-input">Priority 🔥</label>
+                        <select id="task-priority-input">
+                            <option>Low</option>
+                            <option selected>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-status-input">Status  WIP</label>
+                        <select id="task-status-input">
+                            <option>Pending</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="form-cancel-btn">Cancel</button>
+                    <button type="submit" id="form-submit-btn">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Lo-fi Audio Player -->
+    <audio id="lofi-player" loop>
+        <source src="audio/lofi-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Mascot Cheer Bot -->
+    <div class="mascot-bot" id="mascot-bot">
+        <div class="cheer-bubble" id="cheer-bubble">You did it! 🎉</div>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
